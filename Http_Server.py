@@ -16,6 +16,7 @@ This is an extention of Server_Socks that implements an http server
 from Server_Socks import Server_Socks
 import hashlib
 import os
+import subprocess
 import Defs
 from Defs import http_header
 #from multiprocessing.dummy import Pool as ThreadPool
