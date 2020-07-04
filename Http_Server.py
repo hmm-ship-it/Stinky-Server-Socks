@@ -103,7 +103,7 @@ class Http_Server(Server_Socks):
         try:
             if request[0]== 'GET':
                 if request[1]:
-                    hash_request = "sha512sum {s} ".format(s=request)
+                    hash_request = "sha512sum {s} ".format(s=request[2])
                     subprocess.call(hash_request, shell=True)
                     #request_b = str(request[1]).encode()
                     #request_hash = hashlib.sha512(request_b)
