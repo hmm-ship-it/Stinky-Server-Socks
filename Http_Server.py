@@ -4,6 +4,8 @@ This is an extention of Server_Socks that implements an http server
 @Author Tim Hanneman
 @Date MAR 20 2020
 @License GPLv2
+
+#Dependencies: gnucoreutils //For hashing
 '''
 #@TODO: It works, but basically just for the default case. Make sure it works for everything.
 #@TODO: Enforce stricter scope on things.
@@ -100,8 +102,10 @@ class Http_Server(Server_Socks):
         try:
             if request[0]== 'GET':
                 if request[1]:
-                    request_b = str(request[1]).encode()
-                    request_hash = hashlib.sha512(request_b)
+                    hash_request = "sha512sum {s} ".format(s=request)
+                    subprocess.call(hash_request, shell=True)
+                    #request_b = str(request[1]).encode()
+                    #request_hash = hashlib.sha512(request_b)
                 return 'GET', request_hash
             else:
                 request_b = str("/index.html").encode()
